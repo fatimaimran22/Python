@@ -67,7 +67,6 @@ def isPalindrome(string, L, R):
         return False
     return isPalindrome(string,L+1,R-1)
 
-
 Print_n_till_1(6)
 Print_1_till_n(6)
 print(f"Sum: {Sum_first_n(5)}")
