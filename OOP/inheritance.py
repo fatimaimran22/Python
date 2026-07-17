@@ -63,3 +63,50 @@ obj=SmartPhone()
 obj.has_internet()
 obj.has_power()
 obj.can_call()
+
+#Hierarchial Inheritence
+class Account:
+    def __init__(self,owner,balance):
+        self.owner=owner
+        self.balance=balance
+    
+    def deposit(self, amount):
+        self.balance+=amount
+        print(f"Deposited {amount}. New balance: {self.balance}") 
+
+    def withdraw(self, amount):
+        if amount>self.balance:
+            print("Insufficient Balance")
+        else:
+            self.balance-=amount
+            print(f"Withdrew {amount}. New balance: {self.balance}") 
+
+
+class SavingsAccount(Account):
+    def __init__(self, owner, balance, interest_rate):
+        super().__init__(owner, balance)
+        self.interest_rate=interest_rate
+
+    def add_interest(self):
+        interest=self.interest_rate*self.balance
+        self.deposit(interest)
+        print("Interest Added")
+
+class CheckingAccount(Account):
+    def __init__(self, owner, balance, overdraft_limit): 
+        super().__init__(owner, balance) 
+        self.overdraft_limit = overdraft_limit 
+
+    def withdraw(self, amount): 
+        if amount > (self.balance + self.overdraft_limit): 
+            print("Overdraft limit exceeded.") 
+        else: 
+            self.balance -= amount 
+            print(f"Withdrew {amount} (using overdraft). New balance: {self.balance}") 
+ 
+
+s_acc=SavingsAccount("Alice",1000,0.05)
+c_acc=CheckingAccount("Bob",2000,200)
+
+s_acc.add_interest()
+c_acc.withdraw(600)
