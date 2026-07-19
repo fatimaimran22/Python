@@ -1,0 +1,3 @@
+Fatima: 50
+Ali: 41
+Afaq: 41
