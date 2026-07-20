@@ -25,3 +25,27 @@ async def main():
             print("Download Successful.")
     
 asyncio.run(main())
+
+
+async def place_order(customer, prep_time):
+    print(f"Customer {customer} order starts.")
+    await asyncio.sleep(prep_time)
+    print(f"Customer: {customer} order completed after {prep_time} seconds.")
+
+    return f"{customer} order is ready!"
+
+
+async def food_delivery():
+    customers=(
+        place_order("Fatima",2),
+        place_order("Ali",1),
+        place_order("Hajra",3),
+        place_order("Abdul",0.5),
+    )
+
+    results=await asyncio.gather(*customers)
+
+    for r in results:
+        print(r)
+
+asyncio.run(food_delivery())
