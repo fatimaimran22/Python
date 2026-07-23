@@ -23,7 +23,7 @@ def main():
 
     try:
         message = "Message from Client 2"
-        client.send(message.encode())
+        client.sendall(message.encode())
     except OSError as e:
         print(f"Error sending data: {e}")
         client.close()
