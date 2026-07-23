@@ -7,9 +7,6 @@ class CLassName:
     def __init__(self):
         print("init called")
 
-    def __init__(self, args):
-        pass
-
     @classmethod
     def classMethod(cls):
         pass
