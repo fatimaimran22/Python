@@ -5,8 +5,11 @@ FIFO_PATH="/home/dev/Python/pipe/named_pipe/fifo_"
 
 def main():
     if not os.path.exists(FIFO_PATH):
-        os.mkfifo(FIFO_PATH)
-        print(f"\nServer created FIFO at path: {FIFO_PATH}")
+        try:
+            os.mkfifo(FIFO_PATH)
+            print(f"\nServer created FIFO at path: {FIFO_PATH}")
+        except FileExistsError:
+            pass
 
     print("\nReader: Waiting for a writer to open the pipe..")
 
