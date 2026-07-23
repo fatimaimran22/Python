@@ -50,7 +50,7 @@ def main():
                         print(f"Could not decode data from {address_of_client}: {e}")
 
                     try:
-                        conn_to_client.send("\nMessage from server".encode())
+                        conn_to_client.sendall("\nMessage from server".encode())
                     except OSError as e:
                         print(f"Error sending to {address_of_client}: {e}")
 
@@ -63,7 +63,7 @@ def main():
         print("\nServer shutting down (Ctrl+C received).")
 
     finally:
-        server.close()
+        server.close() 
 
 if __name__ == "__main__":
     main()
